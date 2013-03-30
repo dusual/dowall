@@ -8,7 +8,7 @@ function t(s,d){
 
 
 width = window.innerWidth;
-height = (window.innerHeight - 210)/3
+height = (window.innerHeight - 100)
 
 
 Ext.define("DoWall.view.Wall", {
@@ -19,8 +19,8 @@ Ext.define("DoWall.view.Wall", {
     config: {
         style: 'background-color: #0f0',
         layout: 'vbox',
-        title: 'Vbox', // this is better place for title and iconCls :)
-        iconCls: 'action',
+        title: 'Home', // this is better place for title and iconCls :)
+        iconCls: 'home',
         items: [
                 // title bar is here :) 
             {
@@ -35,14 +35,18 @@ Ext.define("DoWall.view.Wall", {
 		    {
 		    docked: 'top',
 		    xtype: 'titlebar',
-		    title: 'Running',
+		    title: 'My First Half',
 		    items: [
-			{
+			{   xtype:'button',
 			    iconMask:true,
 			    iconCls: 'compose',
 			    ui:      'plain',
 			    align:   'right',
-			    action:  'pingHomeBadge'
+			    action: function() {
+				alert('You clicked the button!');
+			    }
+			    
+			
 			},{
 			    iconMask:true,
 			    iconCls: 'delete',
@@ -53,7 +57,7 @@ Ext.define("DoWall.view.Wall", {
 		    ]
 		    },
 		    {   
-			xtype: 'panel',
+			xtype: 'carousel',
 			html: t("<canvas id='panel_one' width='{width}' height='{height}'></canvas>", {'width':width,'height':height}),
 			style: 'background-color: #dbbdc5',
 			flex: 1,
@@ -83,121 +87,70 @@ Ext.define("DoWall.view.Wall", {
             ]
 			
 
-            },
+            }
             
 
-	    {
-                xtype: 'panel',
-		title: 'task1',
-                items: [
-		    {
-		    docked: 'top',
-		    xtype: 'titlebar',
-		    title: 'Walking',
-		    items: [
-			{
-			    iconMask:true,
-			    iconCls: 'compose',
-			    ui:      'plain',
-			    align:   'right',
-			    action:  'pingHomeBadge'
-			},{
-			    iconMask:true,
-			    iconCls: 'delete',
-			    ui:      'plain',
-			    align:   'left',
-			    action:  'clearHomeBadge'
-			}
-		    ]
-		    },
-		    {   
-			xtype: 'panel',
-			html: t("<canvas id='panel_two' width='{width}' height='{height}'></canvas>", {'width':width,'height':height}),
-			style: 'background-color:#d2c2df',
-			flex: 1,
+	    // {
+            //     xtype: 'panel',
+	    // 	title: 'task1',
+            //     items: [
+	    // 	    {
+	    // 	    docked: 'top',
+	    // 	    xtype: 'titlebar',
+	    // 	    title: 'Walking',
+	    // 	    items: [
+	    // 		{
+	    // 		    iconMask:true,
+	    // 		    iconCls: 'compose',
+	    // 		    ui:      'plain',
+	    // 		    align:   'right',
+	    // 		    action:  'pingHomeBadge'
+	    // 		},{
+	    // 		    iconMask:true,
+	    // 		    iconCls: 'delete',
+	    // 		    ui:      'plain',
+	    // 		    align:   'left',
+	    // 		    action:  'clearHomeBadge'
+	    // 		}
+	    // 	    ]
+	    // 	    },
+	    // 	    {   
+	    // 		xtype: 'panel',
+	    // 		html: t("<canvas id='panel_two' width='{width}' height='{height}'></canvas>", {'width':width,'height':height}),
+	    // 		style: 'background-color:#d2c2df',
+	    // 		flex: 1,
 		    
-			listeners: {
-			    painted: function(){
-				color_codes = {1:'#f0f0f0',
-					       0:'#d2c2df',
-					       2:'#c9a8e1',
-					       3:'#9c3de3'
-					      }
+	    // 		listeners: {
+	    // 		    painted: function(){
+	    // 			color_codes = {1:'#f0f0f0',
+	    // 				       0:'#d2c2df',
+	    // 				       2:'#c9a8e1',
+	    // 				       3:'#9c3de3'
+	    // 				      }
 
-			    DoWall.view.Calendar.init('panel_two',color_codes);
-			    }
-			}
+	    // 		    DoWall.view.Calendar.init('panel_two',color_codes);
+	    // 		    }
+	    // 		}
 
 
-		    }
+//		    }
 		
 
 
 
 
 
-            ]
+            
 			
 
-            },
-
-
-	    {
-                xtype: 'panel',
-		title: 'task1',
-                items: [
-		    {
-		    docked: 'top',
-		    xtype: 'titlebar',
-		    title: 'Push-ups',
-		    items: [
-			{
-			    iconMask:true,
-			    iconCls: 'compose',
-			    ui:      'plain',
-			    align:   'right',
-			    action:  'pingHomeBadge'
-			},{
-			    iconMask:true,
-			    iconCls: 'delete',
-			    ui:      'plain',
-			    align:   'left',
-			    action:  'clearHomeBadge'
-			}
-		    ]
-		    },
-		    {   
-			xtype: 'panel',
-			html: t("<canvas id='panel_three' width='{width}' height='{height}'></canvas>", {'width':width,'height':height}),
-			style: 'background-color: #bedae5',
-			flex: 1,
-		    
-			listeners: {
-
-			    painted: function(){
-				color_codes = {1:'#f0f0f0',
-					       0:'#bedae5',
-					       2:'#a3d6eb',
-					       3:'#2bbdf8'
-					      }
-
-				
-			    DoWall.view.Calendar.init('panel_three',color_codes);
-			    }
-			}
-
-
-		    }
 		
 
 
-
-
-
-            ]
+	    
+ //           ]
 			
 
-            }
+   //         }
 	    
 	    
 	    

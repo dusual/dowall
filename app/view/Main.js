@@ -5,6 +5,8 @@ Ext.define("DoWall.view.Main", {
 	tabBarPosition: 'bottom',
 	items: [
 	    {xtype: 'homecard'},
+	    {xtype: 'taskcard'},
+
     ]
     }
 });
